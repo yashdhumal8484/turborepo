@@ -5,11 +5,12 @@ on:
   - "main"
 jobs:
    redeploy_everything:
+   runs-on: ubuntu-latest
    name: Deploying everything to starting cluster
 
    steps:
-   - name: SSH Into server
-   - run: |
+    name: SSH Into server
+    run: |
       echo ${{secrets.SSH_PRIVATE_KEY}} &> ~/ssh_key
       ssh -i ~/ssh_key root@64.227.147.124
       cd week-25-ci && git pull
